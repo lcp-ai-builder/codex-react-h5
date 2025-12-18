@@ -3,18 +3,19 @@ import { Outlet } from 'react-router-dom'
 import { PortraitOnlyGuard } from '@/ui/components/PortraitOnlyGuard'
 import { SafeArea } from '@/ui/components/SafeArea'
 import { BottomNav } from '@/ui/components/BottomNav'
+import { AppHeader } from '@/ui/components/AppHeader'
 
 export function AppLayout() {
   return (
     <PortraitOnlyGuard>
-      <SafeArea sx={{ paddingBottom: 0 }}>
-        <Box minH="calc(100dvh - var(--safe-top))">
+      <SafeArea sx={{ paddingTop: 0, paddingBottom: 0 }}>
+        <Box minH="100dvh">
+          <AppHeader />
           <Container
             maxW="md"
             px="4"
-            py="4"
-            minH="calc(100dvh - var(--safe-top))"
-            pb="calc(var(--bottom-nav-height) + var(--safe-bottom))"
+            pt="calc(var(--app-header-height) + var(--safe-top) + 16px)"
+            pb="calc(var(--bottom-nav-height) + var(--safe-bottom) + 16px)"
           >
             <Outlet />
           </Container>
