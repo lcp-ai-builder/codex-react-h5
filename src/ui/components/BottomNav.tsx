@@ -1,16 +1,17 @@
 import { Box, Button, Container, HStack, useColorModeValue } from '@chakra-ui/react'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
+import { useI18n } from '@/i18n/useI18n'
 
 type NavItem = {
-  label: string
+  labelKey: 'nav.my' | 'nav.trade' | 'nav.messages' | 'nav.settings'
   to: string
 }
 
 const navItems: NavItem[] = [
-  { label: '我的', to: '/my' },
-  { label: '交易', to: '/trade' },
-  { label: '消息', to: '/messages' },
-  { label: '设置', to: '/settings' }
+  { labelKey: 'nav.my', to: '/my' },
+  { labelKey: 'nav.trade', to: '/trade' },
+  { labelKey: 'nav.messages', to: '/messages' },
+  { labelKey: 'nav.settings', to: '/settings' }
 ]
 
 export function BottomNav() {
@@ -19,6 +20,7 @@ export function BottomNav() {
   const navBorder = useColorModeValue('gray.200', 'gray.700')
   const activeColor = useColorModeValue('teal.800', 'teal.200')
   const inactiveColor = useColorModeValue('gray.500', 'gray.400')
+  const { t } = useI18n()
 
   return (
     <Box
@@ -63,9 +65,9 @@ export function BottomNav() {
                 _focusVisible={{ bg: 'transparent', boxShadow: 'none' }}
                 sx={{ WebkitTapHighlightColor: 'transparent' }}
               >
-                {item.label}
-              </Button>
-            )
+              {t(item.labelKey)}
+            </Button>
+          )
           })}
         </HStack>
       </Container>

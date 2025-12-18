@@ -5,6 +5,7 @@ This repository is intended to host a React-based H5 scaffold. The current requi
 
 ## Collaboration Workflow (Important)
 - Discuss all requirements first, then confirm before implementation.
+- For every new feature, internationalize all user-facing copy: you provide Chinese; I translate to English. If any translation is ambiguous, I will ask you to confirm the intended meaning.
 
 ## Project Structure & Module Organization
 - `src/`: React + TypeScript app code.
