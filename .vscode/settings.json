@@ -1,0 +1,30 @@
+{
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 200,
+  "cSpell.enabled": false,
+  "editor.fontFamily": "'Google Sans Code','Monaspace Neon',Monaco,'JetBrains Mono','WenQuanYi Micro Hei Mono','Microsoft YaHei','Fira Code', Consolas, 'Courier New', monospace",
+  "eslint.enable": true,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    ".config": ".prettierrc*,eslint*,.eslintignore,.eslint*,.gitignore,jsconfig.json,tsconfig.json,vite.config.js,vite.config.ts,package*,.env*",
+    ".other": "description,note,AGENTS.md",
+    ".shell": "*.sh",
+    ".static": "favicon.*,index.html"
+  },
+  "explorer.sortOrder": "type",
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.idea": true,
+    "**/.svn": true,
+    "**/Thumbs.db": true,
+    "package-lock.json": true,
+    "yarn.lock": true
+  },
+  "git.enableCommitSigning": true,
+  "prettier.printWidth": 200,
+  "vite.autoStart": false,
+  "workbench.colorTheme": "One Dark Bimbo",
+  "workbench.iconTheme": "catppuccin-perfect-dark"
+}
