@@ -6,14 +6,15 @@ import {
   Switch,
   Text,
   VStack,
-  useColorMode,
   useColorModeValue
 } from '@chakra-ui/react'
+import { useUiStore } from '@/store/uiStore'
 
 export function SettingsPage() {
   const subtleText = useColorModeValue('gray.600', 'gray.400')
   const borderColor = useColorModeValue('gray.200', 'gray.700')
-  const { colorMode, toggleColorMode } = useColorMode()
+  const colorMode = useUiStore((s) => s.colorMode)
+  const toggleColorMode = useUiStore((s) => s.toggleColorMode)
 
   return (
     <VStack align="stretch" spacing="6">
