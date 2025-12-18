@@ -1,9 +1,29 @@
-import { Avatar, Box, Container, HStack, IconButton, Text, useColorModeValue } from '@chakra-ui/react'
+import {
+  Avatar,
+  Box,
+  Container,
+  HStack,
+  Icon,
+  IconButton,
+  Text,
+  useColorModeValue
+} from '@chakra-ui/react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useMemo } from 'react'
 import { useAuthStore } from '@/store/authStore'
 import { useI18n } from '@/i18n/useI18n'
 import type { MessageKey } from '@/i18n/messages'
+
+function BackIcon() {
+  return (
+    <Icon viewBox="0 0 24 24" width="20px" height="20px">
+      <path
+        fill="currentColor"
+        d="M15.5 19a1 1 0 0 1-.7-.29l-6-6a1 1 0 0 1 0-1.42l6-6a1 1 0 1 1 1.4 1.42L10.91 12l5.29 5.29A1 1 0 0 1 15.5 19Z"
+      />
+    </Icon>
+  )
+}
 
 function titleKeyFromPathname(pathname: string): MessageKey {
   const seg = pathname.split('/').filter(Boolean)[0] ?? ''
@@ -18,6 +38,8 @@ function titleKeyFromPathname(pathname: string): MessageKey {
       return 'title.settings'
     case 'login':
       return 'title.login'
+    case 'register':
+      return 'title.register'
     case 'profile':
       return 'title.profile'
     default:
@@ -34,7 +56,12 @@ export function AppHeader() {
   const { t } = useI18n()
   const user = useAuthStore((s) => s.user)
 
+  const pathnameSeg = useMemo(
+    () => location.pathname.split('/').filter(Boolean)[0] ?? '',
+    [location.pathname]
+  )
   const titleKey = useMemo(() => titleKeyFromPathname(location.pathname), [location.pathname])
+  const showBack = pathnameSeg === 'login' || pathnameSeg === 'register' || pathnameSeg === 'profile'
 
   return (
     <Box
@@ -52,7 +79,20 @@ export function AppHeader() {
     >
       <Container maxW="md" px="4" height="var(--app-header-height)">
         <HStack height="full" justifyContent="space-between">
-          <Box width="36px" />
+          {showBack ? (
+            <IconButton
+              aria-label={t('header.back')}
+              variant="ghost"
+              size="sm"
+              icon={<BackIcon />}
+              onClick={() => {
+                if (window.history.length > 1) navigate(-1)
+                else navigate('/my', { replace: true })
+              }}
+            />
+          ) : (
+            <Box width="36px" />
+          )}
           <Text fontWeight="semibold">{t(titleKey)}</Text>
           <IconButton
             aria-label={t('header.avatar')}

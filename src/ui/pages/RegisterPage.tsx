@@ -1,11 +1,10 @@
-import { Button, Heading, HStack, Input, Link, Text, VStack, useColorModeValue } from '@chakra-ui/react'
+import { Button, Heading, Input, VStack } from '@chakra-ui/react'
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
 import { useI18n } from '@/i18n/useI18n'
 
-export function LoginPage() {
-  const subtleText = useColorModeValue('gray.600', 'gray.400')
+export function RegisterPage() {
   const { t } = useI18n()
   const navigate = useNavigate()
 
@@ -15,8 +14,7 @@ export function LoginPage() {
 
   return (
     <VStack align="stretch" spacing="4">
-      <Heading size="md">{t('title.login')}</Heading>
-      <Text color={subtleText}>{t('login.subtitle')}</Text>
+      <Heading size="md">{t('title.register')}</Heading>
       <Input value={name} onChange={(e) => setName(e.target.value)} placeholder={t('login.name')} />
       <Button
         colorScheme="teal"
@@ -26,13 +24,9 @@ export function LoginPage() {
           navigate('/profile', { replace: true })
         }}
       >
-        {t('login.submit')}
+        {t('register.submit')}
       </Button>
-      <HStack justifyContent="center">
-        <Link color="teal.500" onClick={() => navigate('/register')}>
-          {t('login.register')}
-        </Link>
-      </HStack>
     </VStack>
   )
 }
+
