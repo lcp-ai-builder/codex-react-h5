@@ -29,7 +29,10 @@ export function BottomNav() {
       py="1"
       mt="4"
     >
-      <HStack spacing="0.5">
+      <HStack
+        spacing="0.5"
+        divider={<Box borderLeft="1px solid" borderColor={navBorder} height="20px" />}
+      >
         {navItems.map((item) => {
           const isActive =
             location.pathname === item.to || location.pathname.startsWith(`${item.to}/`)
