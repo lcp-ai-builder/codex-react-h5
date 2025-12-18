@@ -7,21 +7,18 @@ import { BottomNav } from '@/ui/components/BottomNav'
 export function AppLayout() {
   return (
     <PortraitOnlyGuard>
-      <SafeArea>
-        <Box minH="100vh">
+      <SafeArea sx={{ paddingBottom: 0 }}>
+        <Box minH="calc(100dvh - var(--safe-top))">
           <Container
             maxW="md"
             px="4"
             py="4"
-            display="flex"
-            flexDirection="column"
-            minH="100vh"
+            minH="calc(100dvh - var(--safe-top))"
+            pb="calc(var(--bottom-nav-height) + var(--safe-bottom))"
           >
-            <Box flex="1">
-              <Outlet />
-            </Box>
-            <BottomNav />
+            <Outlet />
           </Container>
+          <BottomNav />
         </Box>
       </SafeArea>
     </PortraitOnlyGuard>

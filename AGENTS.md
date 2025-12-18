@@ -4,7 +4,7 @@
 This repository is intended to host a React-based H5 scaffold. The current requirement note in `descriptions/需求20251218-001` indicates the UI must adapt to iPhone X (iPhone 10) and newer models (safe areas / notch handling).
 
 ## Collaboration Workflow (Important)
-- 所有需求，先讨论，然后再确认执行。
+- Discuss all requirements first, then confirm before implementation.
 
 ## Project Structure & Module Organization
 - `src/`: React + TypeScript app code.

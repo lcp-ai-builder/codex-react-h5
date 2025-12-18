@@ -3,7 +3,6 @@ import {
   Divider,
   Heading,
   HStack,
-  Spacer,
   Switch,
   Text,
   VStack,
